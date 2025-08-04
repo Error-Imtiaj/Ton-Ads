@@ -3,5 +3,6 @@ class AppAssets {
   static const String _baseUrl = "assets/images";
 
   // LOGO PATH 
-  static const String appLogoPath = "$_baseUrl/logo.svg";
+  static const String appLogoPath = "$_baseUrl/splashLogo.svg";
+  static const String mainAppLogoPath = "$_baseUrl/mainLogo.svg";
 }

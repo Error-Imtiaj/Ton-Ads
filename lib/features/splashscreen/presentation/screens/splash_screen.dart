@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
             borderRadius: BorderRadius.circular(25.r),
             child: SvgPicture.asset(
               AppAssets.appLogoPath,
-              width: 100.w,
+              width: 200.w,
               height: 100.h,
               fit: BoxFit.cover,
             ),

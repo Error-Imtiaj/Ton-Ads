@@ -1,5 +1,5 @@
 import 'package:earn_watching_ads/core/utils/app_routes.dart';
-import 'package:earn_watching_ads/features/authscreen/presentation/app_create_account.dart';
+import 'package:earn_watching_ads/features/authscreen/presentation/screens/app_create_account.dart';
 import 'package:earn_watching_ads/features/splashscreen/bloc/splash_bloc.dart';
 import 'package:earn_watching_ads/features/splashscreen/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
