@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "257911196069",
+    "project_id": "gen-usd",
+    "storage_bucket": "gen-usd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257911196069:android:3e2e5ef6c5ff9ace44804c",
+        "android_client_info": {
+          "package_name": "com.example.earn_watching_ads"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHi4wZ2i8iQBfofKRWgjik0ZbNMrWLQsY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
