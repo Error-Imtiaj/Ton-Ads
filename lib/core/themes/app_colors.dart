@@ -8,5 +8,7 @@ class AppColors {
   static const Color textFieldBackColor = Color(0xffFFFFFF);
   static const Color errorSnackBarColor = Color(0xffeb2f06);
   static const Color errorSnackBarTextColor = Color(0xffFFFFFF);
+  static const Color successSnackBarColor = Color(0xff079992);
+
   
 }

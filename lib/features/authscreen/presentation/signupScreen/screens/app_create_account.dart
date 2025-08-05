@@ -4,9 +4,11 @@ import 'package:earn_watching_ads/core/utils/app_assets.dart';
 import 'package:earn_watching_ads/core/utils/app_routes.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/bloc/sign_up_bloc.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_logo.dart';
+import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_snackbar.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_text_field.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/auth_button.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/auth_page_title.dart';
+import 'package:earn_watching_ads/features/authscreen/presentation/widgets/lodaing.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/signup_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,12 +49,7 @@ class _AppCreateAccountState extends State<AppCreateAccount> {
           body: Padding(
             padding: EdgeInsets.all(AppConst.scaffoldPadding.w),
             child: (state is SignUpLoading)
-                ? Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: AppColors.authPagesScaffoldBackColor,
-                      color: AppColors.splashScreenBackgroundColor,
-                    ),
-                  )
+                ? Loading()
                 : SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -138,18 +135,17 @@ class _AppCreateAccountState extends State<AppCreateAccount> {
 
   void signUpListener(BuildContext context, SignUpState state) {
     if (state is SignUpSuccess) {
-      context.pushReplacementNamed(AppRoutes.homeRouteName);
+      AppSnackbar.show(
+        context: context,
+        message: "Congratulations! Your account has been created",
+        backgroundColor: AppColors.successSnackBarColor,
+      );
+      context.goNamed(AppRoutes.homeRouteName);
     } else if (state is SignUpFailed) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            state.errorMsg,
-            style: Theme.of(context).textTheme.labelSmall?.copyWith(
-              color: AppColors.errorSnackBarTextColor,
-            ),
-          ),
-          backgroundColor: AppColors.errorSnackBarColor,
-        ),
+      AppSnackbar.show(
+        context: context,
+        message: state.errorMsg,
+        backgroundColor: AppColors.errorSnackBarColor,
       );
     }
   }

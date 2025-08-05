@@ -1,10 +1,12 @@
 import 'package:earn_watching_ads/core/themes/app_theme.dart';
 import 'package:earn_watching_ads/core/utils/app_routes.dart';
 import 'package:earn_watching_ads/core/utils/service_locator.dart';
+import 'package:earn_watching_ads/features/authscreen/presentation/loginscreen/bloc/login_bloc.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/bloc/sign_up_bloc.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/screens/app_create_account.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/loginscreen/screens/app_login.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/forgetPassword/screens/forget_password.dart';
+import 'package:earn_watching_ads/features/homeScreen/bloc/home_bloc.dart';
 import 'package:earn_watching_ads/features/homeScreen/presentation/screens/home_screen.dart';
 import 'package:earn_watching_ads/features/splashscreen/bloc/splash_bloc.dart';
 import 'package:earn_watching_ads/features/splashscreen/presentation/screens/splash_screen.dart';
@@ -27,6 +29,8 @@ class EarnApp extends StatelessWidget {
           providers: [
             BlocProvider(create: (context) => getIt<SplashBloc>()),
             BlocProvider(create: (context) => getIt<SignUpBloc>()),
+            BlocProvider(create: (context) => getIt<LoginBloc>()),
+            BlocProvider(create: (context) => getIt<HomeBloc>()),
           ],
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
