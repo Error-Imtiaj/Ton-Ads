@@ -1,3 +1,4 @@
+import 'package:earn_watching_ads/core/themes/app_theme.dart';
 import 'package:earn_watching_ads/core/utils/app_routes.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/screens/app_create_account.dart';
 import 'package:earn_watching_ads/features/splashscreen/bloc/splash_bloc.dart';
@@ -23,11 +24,14 @@ class EarnApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: "Earn Money",
             routerConfig: _router,
+            theme: AppTheme.lightTheme(context),
           ),
         );
       },
     );
   }
+
+  //? GO ROUTE CONFIG
 
   final GoRouter _router = GoRouter(
     initialLocation: AppRoutes.initialRoutePath,
