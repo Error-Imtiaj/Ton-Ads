@@ -12,19 +12,23 @@ class AppTextField extends StatelessWidget {
     super.key,
     required this.labelText,
     this.obsecureText,
-    this.textEditingController, this.validator,
+    this.textEditingController,
+    this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: TextfieldBoxDecoration.textFieldContainerDecoration(context, AppColors.testFieldBackColor),
+      decoration: TextfieldBoxDecoration.textFieldContainerDecoration(
+        context: context,
+        backgroundColor: AppColors.textFieldBackColor,
+      ),
       child: TextFormField(
+        style: Theme.of(context).textTheme.labelLarge?.copyWith(fontSize: 18),
         obscureText: obsecureText ?? false,
         decoration: InputDecoration(labelText: labelText),
         controller: textEditingController,
         validator: validator,
-        
       ),
     );
   }

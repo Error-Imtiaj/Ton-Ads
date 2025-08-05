@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state is SplashNavigateToHome) {
-          context.go(AppRoutes.signUpRoutePath);
+          context.go(AppRoutes.loginRoutePath);
         }
       },
       child: Scaffold(

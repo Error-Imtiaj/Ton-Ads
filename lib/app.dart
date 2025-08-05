@@ -1,6 +1,11 @@
 import 'package:earn_watching_ads/core/themes/app_theme.dart';
 import 'package:earn_watching_ads/core/utils/app_routes.dart';
-import 'package:earn_watching_ads/features/authscreen/presentation/screens/app_create_account.dart';
+import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/bloc/sign_up_bloc.dart';
+import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/data/sign_up_auth.dart';
+import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/screens/app_create_account.dart';
+import 'package:earn_watching_ads/features/authscreen/presentation/loginscreen/screens/app_login.dart';
+import 'package:earn_watching_ads/features/authscreen/presentation/forgetPassword/screens/forget_password.dart';
+import 'package:earn_watching_ads/features/homeScreen/presentation/screens/home_screen.dart';
 import 'package:earn_watching_ads/features/splashscreen/bloc/splash_bloc.dart';
 import 'package:earn_watching_ads/features/splashscreen/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +18,19 @@ class EarnApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SignUpAuth signUpAuth = SignUpAuth();
     return ScreenUtilInit(
       designSize: const Size(411, 914),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
         return MultiBlocProvider(
-          providers: [BlocProvider(create: (context) => SplashBloc())],
+          providers: [
+            BlocProvider(create: (context) => SplashBloc()),
+            BlocProvider(
+              create: (context) => SignUpBloc(signUpAuth: signUpAuth),
+            ),
+          ],
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: "Earn Money",
@@ -40,10 +51,33 @@ class EarnApp extends StatelessWidget {
         path: AppRoutes.initialRoutePath,
         builder: (context, state) => const SplashScreen(),
       ),
-      // AUTH ROUTES
+      // * /LOGIN ROUTES
       GoRoute(
-        path: AppRoutes.signUpRoutePath,
-        builder: (context, state) => const AppCreateAccount(),
+        path: AppRoutes.loginRoutePath,
+        name: AppRoutes.loginRouteName,
+        builder: (context, state) => const AppLogin(),
+        routes: [
+          //? SIGN UP ROUTE
+          GoRoute(
+            path: AppRoutes.signUpRoutePath,
+            name: AppRoutes.signUpRouteName,
+            builder: (context, state) => const AppCreateAccount(),
+          ),
+
+          //? FORGET PASSWORD ROUTE
+          GoRoute(
+            path: AppRoutes.forgetRoutePath,
+            name: AppRoutes.forgetRouteName,
+            builder: (context, state) => const ForgetPassword(),
+          ),
+        ],
+      ),
+
+      // TODO HOME ROUTES
+      GoRoute(
+        path: AppRoutes.homeRoutePath,
+        name: AppRoutes.homeRouteName,
+        builder: (context, state) => const HomeScreen(),
       ),
     ],
   );

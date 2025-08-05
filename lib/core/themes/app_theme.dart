@@ -19,7 +19,7 @@ class AppTheme {
         ),
 
         filled: true,
-        fillColor: AppColors.testFieldBackColor,
+        fillColor: AppColors.textFieldBackColor,
         contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
       ),
 
@@ -27,6 +27,10 @@ class AppTheme {
       textTheme: TextTheme(
         labelLarge: GoogleFonts.merriweather(
           fontSize: 24,
+          fontWeight: FontWeight.w600,
+        ),
+        labelSmall: GoogleFonts.merriweather(
+          fontSize: 14,
           fontWeight: FontWeight.w600,
         ),
       ),
