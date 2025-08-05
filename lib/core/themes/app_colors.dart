@@ -6,4 +6,7 @@ class AppColors {
   static const Color appPrimaryColor = Color(0xff1e319d);
   static const Color authPagesScaffoldBackColor = Color(0xffFFFFFF);
   static const Color textFieldBackColor = Color(0xffFFFFFF);
+  static const Color errorSnackBarColor = Color(0xffeb2f06);
+  static const Color errorSnackBarTextColor = Color(0xffFFFFFF);
+  
 }

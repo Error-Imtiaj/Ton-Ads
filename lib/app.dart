@@ -1,7 +1,7 @@
 import 'package:earn_watching_ads/core/themes/app_theme.dart';
 import 'package:earn_watching_ads/core/utils/app_routes.dart';
+import 'package:earn_watching_ads/core/utils/service_locator.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/bloc/sign_up_bloc.dart';
-import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/data/sign_up_auth.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/screens/app_create_account.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/loginscreen/screens/app_login.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/forgetPassword/screens/forget_password.dart';
@@ -18,7 +18,6 @@ class EarnApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SignUpAuth signUpAuth = SignUpAuth();
     return ScreenUtilInit(
       designSize: const Size(411, 914),
       minTextAdapt: true,
@@ -26,10 +25,8 @@ class EarnApp extends StatelessWidget {
       builder: (context, child) {
         return MultiBlocProvider(
           providers: [
-            BlocProvider(create: (context) => SplashBloc()),
-            BlocProvider(
-              create: (context) => SignUpBloc(signUpAuth: signUpAuth),
-            ),
+            BlocProvider(create: (context) => getIt<SplashBloc>()),
+            BlocProvider(create: (context) => getIt<SignUpBloc>()),
           ],
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,

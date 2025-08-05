@@ -39,89 +39,93 @@ class _AppCreateAccountState extends State<AppCreateAccount> {
   Widget build(BuildContext context) {
     return BlocConsumer<SignUpBloc, SignUpState>(
       listener: (context, state) {
-        if (state is SignUpSuccess) {
-          context.pushReplacementNamed(AppRoutes.homeRouteName);
-        } else if (state is SignUpFailed) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.errorMsg)));
-        }
+        signUpListener(context, state);
       },
       builder: (context, state) {
         return Scaffold(
           backgroundColor: AppColors.authPagesScaffoldBackColor,
           body: Padding(
             padding: EdgeInsets.all(AppConst.scaffoldPadding.w),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Gap(24.h),
-                  IconButton.filled(
-                    style: IconButton.styleFrom(
-                      backgroundColor: AppColors.appPrimaryColor,
+            child: (state is SignUpLoading)
+                ? Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: AppColors.authPagesScaffoldBackColor,
+                      color: AppColors.splashScreenBackgroundColor,
                     ),
-                    onPressed: () {
-                      context.pop();
-                    },
-                    icon: Icon(Icons.arrow_back),
-                  ),
-                  // * LOGO
-                  Gap(48.h),
-                  AppLogo(),
-                  AuthPageTitle(title: "Create Your Account"),
-                  // * TEXT FIELD
-                  Gap(28.h),
-                  // * FORM
-                  AppTextField(
-                    labelText: "Email",
-                    textEditingController: emailController,
-                  ),
-                  Gap(28.h),
-                  AppTextField(
-                    labelText: "Password",
-                    obsecureText: true,
-                    textEditingController: passController,
-                  ),
-                  Gap(28.h),
-                  AppTextField(
-                    labelText: "Confirm Password",
-                    obsecureText: true,
-                    textEditingController: confirmPassController,
-                  ),
-                  Gap(28.h),
-                  AuthButton(
-                    buttonName: "Sign up",
-                    ontap: () {
-                      print(emailController.text);
-                      context.read<SignUpBloc>().add(
-                        SignUpButtonPressed(
-                          email: emailController.text,
-                          password: passController.text.trim(),
-                          confirmPassword: confirmPassController.text.trim(),
+                  )
+                : SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Gap(24.h),
+                        backButton(),
+                        // * LOGO
+                        Gap(48.h),
+                        AppLogo(),
+                        AuthPageTitle(title: "Create Your Account"),
+                        // * TEXT FIELD
+                        Gap(28.h),
+                        // * FORM
+                        AppTextField(
+                          labelText: "Email",
+                          textEditingController: emailController,
                         ),
-                      );
-                    },
-                  ),
-                  Gap(56.h),
-                  Center(
-                    child: Text(
-                      "--Or sign up with --",
-                      style: Theme.of(context).textTheme.labelSmall,
+                        Gap(28.h),
+                        AppTextField(
+                          labelText: "Password",
+                          obsecureText: true,
+                          textEditingController: passController,
+                        ),
+                        Gap(28.h),
+                        AppTextField(
+                          labelText: "Confirm Password",
+                          obsecureText: true,
+                          textEditingController: confirmPassController,
+                        ),
+                        Gap(28.h),
+                        AuthButton(
+                          buttonName: "Sign up",
+                          ontap: () {
+                            print(emailController.text);
+                            context.read<SignUpBloc>().add(
+                              SignUpButtonPressed(
+                                email: emailController.text,
+                                password: passController.text.trim(),
+                                confirmPassword: confirmPassController.text
+                                    .trim(),
+                              ),
+                            );
+                          },
+                        ),
+                        Gap(56.h),
+                        Center(
+                          child: Text(
+                            "--Or sign up with --",
+                            style: Theme.of(context).textTheme.labelSmall,
+                          ),
+                        ),
+                        Gap(28.h),
+                        googleFbSection(),
+                      ],
                     ),
                   ),
-                  Gap(28.h),
-                  google_fb_section(),
-                ],
-              ),
-            ),
           ),
         );
       },
     );
   }
 
-  Row google_fb_section() {
+  IconButton backButton() {
+    return IconButton.filled(
+      style: IconButton.styleFrom(backgroundColor: AppColors.appPrimaryColor),
+      onPressed: () {
+        context.pop();
+      },
+      icon: Icon(Icons.arrow_back),
+    );
+  }
+
+  Row googleFbSection() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -130,5 +134,23 @@ class _AppCreateAccountState extends State<AppCreateAccount> {
         SignupIconWidget(svgAssetPath: AppAssets.googleLogo, ontap: () {}),
       ],
     );
+  }
+
+  void signUpListener(BuildContext context, SignUpState state) {
+    if (state is SignUpSuccess) {
+      context.pushReplacementNamed(AppRoutes.homeRouteName);
+    } else if (state is SignUpFailed) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            state.errorMsg,
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+              color: AppColors.errorSnackBarTextColor,
+            ),
+          ),
+          backgroundColor: AppColors.errorSnackBarColor,
+        ),
+      );
+    }
   }
 }
