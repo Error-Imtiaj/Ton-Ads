@@ -1,6 +1,7 @@
 import 'package:earn_watching_ads/core/themes/app_theme.dart';
 import 'package:earn_watching_ads/core/utils/app_routes.dart';
 import 'package:earn_watching_ads/core/utils/service_locator.dart';
+import 'package:earn_watching_ads/features/authscreen/presentation/forgetPassword/bloc/forget_pass_bloc.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/loginscreen/bloc/login_bloc.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/bloc/sign_up_bloc.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/screens/app_create_account.dart';
@@ -31,6 +32,7 @@ class EarnApp extends StatelessWidget {
             BlocProvider(create: (context) => getIt<SignUpBloc>()),
             BlocProvider(create: (context) => getIt<LoginBloc>()),
             BlocProvider(create: (context) => getIt<HomeBloc>()),
+            BlocProvider(create: (context) => getIt<ForgetPassBloc>()),
           ],
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
@@ -48,33 +50,34 @@ class EarnApp extends StatelessWidget {
   final GoRouter _router = GoRouter(
     initialLocation: AppRoutes.initialRoutePath,
     routes: [
+      // Splash Screen
       GoRoute(
         path: AppRoutes.initialRoutePath,
         builder: (context, state) => const SplashScreen(),
       ),
-      // * /LOGIN ROUTES
+
+      // Login
       GoRoute(
         path: AppRoutes.loginRoutePath,
         name: AppRoutes.loginRouteName,
         builder: (context, state) => const AppLogin(),
-        routes: [
-          //? SIGN UP ROUTE
-          GoRoute(
-            path: AppRoutes.signUpRoutePath,
-            name: AppRoutes.signUpRouteName,
-            builder: (context, state) => const AppCreateAccount(),
-          ),
-
-          //? FORGET PASSWORD ROUTE
-          GoRoute(
-            path: AppRoutes.forgetRoutePath,
-            name: AppRoutes.forgetRouteName,
-            builder: (context, state) => const ForgetPassword(),
-          ),
-        ],
       ),
 
-      // TODO HOME ROUTES
+      // Sign Up (top-level)
+      GoRoute(
+        path: '/${AppRoutes.signUpRoutePath}',
+        name: AppRoutes.signUpRouteName,
+        builder: (context, state) => const AppCreateAccount(),
+      ),
+
+      // Forget Password (top-level)
+      GoRoute(
+        path: '/${AppRoutes.forgetRoutePath}',
+        name: AppRoutes.forgetRouteName,
+        builder: (context, state) => const ForgetPassword(),
+      ),
+
+      // Home
       GoRoute(
         path: AppRoutes.homeRoutePath,
         name: AppRoutes.homeRouteName,

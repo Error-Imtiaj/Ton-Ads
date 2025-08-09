@@ -108,10 +108,22 @@ class _AppLoginState extends State<AppLogin> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SignupIconWidget(svgAssetPath: AppAssets.fbLogo),
+                            // SignupIconWidget(
+                            //   svgAssetPath: AppAssets.fbLogo,
+                            //   ontap: () {
+                            //     context.read<LoginBloc>().add(
+                            //       LoginWithFacebook(),
+                            //     );
+                            //   },
+                            // ),
                             Gap(24.w),
                             SignupIconWidget(
                               svgAssetPath: AppAssets.googleLogo,
+                              ontap: () {
+                                context.read<LoginBloc>().add(
+                                  LoginWithGoogle(),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -123,12 +135,18 @@ class _AppLoginState extends State<AppLogin> {
                           },
                         ),
                         Gap(14.h),
+
                         RedirectFromLogin(
                           maintext: "",
                           linktext: "Forget Password",
+
+                          // 👉 Navigate to register page
                           ontap: () {
-                            // 👉 Navigate to register page
-                            context.pushNamed(AppRoutes.forgetRouteName);
+                            try {
+                              context.pushNamed(AppRoutes.forgetRouteName);
+                            } catch (e) {
+                              debugPrint("Navigation error: $e");
+                            }
                           },
                         ),
                       ],

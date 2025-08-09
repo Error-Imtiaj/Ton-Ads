@@ -9,3 +9,7 @@ final class LoginRequested extends LoginEvent {
 
   LoginRequested({required this.email, required this.password});
 }
+
+final class LoginWithGoogle extends LoginEvent {}
+
+final class LoginWithFacebook extends LoginEvent {}

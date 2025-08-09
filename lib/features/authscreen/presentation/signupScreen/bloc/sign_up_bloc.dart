@@ -43,5 +43,15 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         emit(SignUpFailed(errorMsg: e.toString()));
       }
     });
+
+    on<SignUpWithGooglePressed>((event, emit) async {
+       emit(SignUpLoading());
+      try {
+        await signUpAuth.signInWithGoogle();
+        emit(SignUpSuccess());
+      } catch (e) {
+        emit(SignUpFailed(errorMsg: e.toString()));
+      }
+    });
   }
 }

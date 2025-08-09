@@ -102,7 +102,7 @@ class _AppCreateAccountState extends State<AppCreateAccount> {
                           ),
                         ),
                         Gap(28.h),
-                        googleFbSection(),
+                        googleFbSection(context),
                       ],
                     ),
                   ),
@@ -122,13 +122,17 @@ class _AppCreateAccountState extends State<AppCreateAccount> {
     );
   }
 
-  Row googleFbSection() {
+  Row googleFbSection(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SignupIconWidget(svgAssetPath: AppAssets.fbLogo, ontap: () {}),
         Gap(24.w),
-        SignupIconWidget(svgAssetPath: AppAssets.googleLogo, ontap: () {}),
+        SignupIconWidget(
+          svgAssetPath: AppAssets.googleLogo,
+          ontap: () {
+            context.read<SignUpBloc>().add(SignUpWithGooglePressed());
+          },
+        ),
       ],
     );
   }

@@ -14,3 +14,5 @@ final class SignUpButtonPressed extends SignUpEvent {
     required this.confirmPassword,
   });
 }
+
+final class SignUpWithGooglePressed extends SignUpEvent {}
