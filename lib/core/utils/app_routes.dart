@@ -6,6 +6,8 @@ class AppRoutes {
   static const String signUpRoutePath = 'signUp';
   static const String forgetRoutePath = 'forget';
 
+  // OTHER ROUTES
+  static const String profileOnBoardRoutePath = '/profileOn';
   // CORE APP ROUTES
   static const String homeRoutePath = '/home';
 
@@ -14,4 +16,5 @@ class AppRoutes {
   static const String loginRouteName = 'LoginRoute';
   static const String forgetRouteName = 'ForgetRoute';
   static const String homeRouteName = 'HomeRoute';
+  static const String profileOnBoardRouteName = 'ProfileOn';
 }

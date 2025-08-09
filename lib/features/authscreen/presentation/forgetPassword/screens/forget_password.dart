@@ -3,8 +3,8 @@ import 'package:earn_watching_ads/core/themes/app_const.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/forgetPassword/bloc/forget_pass_bloc.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_logo.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_snackbar.dart';
-import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_text_field.dart';
-import 'package:earn_watching_ads/features/authscreen/presentation/widgets/auth_button.dart';
+import 'package:earn_watching_ads/core/widgets/app_text_field.dart';
+import 'package:earn_watching_ads/core/widgets/app_button.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/auth_page_title.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/lodaing.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +83,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           textEditingController: emailController,
                         ),
                         Gap(28.h),
-                        AuthButton(
+                        AppButton(
                           buttonName: "Reset link",
                           ontap: () {
                             context.read<ForgetPassBloc>().add(

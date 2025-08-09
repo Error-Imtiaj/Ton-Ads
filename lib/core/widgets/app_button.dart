@@ -3,11 +3,11 @@ import 'package:earn_watching_ads/features/authscreen/presentation/widgets/textf
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AuthButton extends StatelessWidget {
+class AppButton extends StatelessWidget {
   final String buttonName;
   final VoidCallback? ontap;
 
-  const AuthButton({super.key, required this.buttonName, this.ontap});
+  const AppButton({super.key, required this.buttonName, this.ontap});
 
   @override
   Widget build(BuildContext context) {

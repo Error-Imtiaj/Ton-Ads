@@ -5,8 +5,8 @@ import 'package:earn_watching_ads/core/utils/app_routes.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/bloc/sign_up_bloc.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_logo.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_snackbar.dart';
-import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_text_field.dart';
-import 'package:earn_watching_ads/features/authscreen/presentation/widgets/auth_button.dart';
+import 'package:earn_watching_ads/core/widgets/app_text_field.dart';
+import 'package:earn_watching_ads/core/widgets/app_button.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/auth_page_title.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/lodaing.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/signup_icon_widget.dart';
@@ -80,7 +80,7 @@ class _AppCreateAccountState extends State<AppCreateAccount> {
                           textEditingController: confirmPassController,
                         ),
                         Gap(28.h),
-                        AuthButton(
+                        AppButton(
                           buttonName: "Sign up",
                           ontap: () {
                             print(emailController.text);
@@ -144,7 +144,7 @@ class _AppCreateAccountState extends State<AppCreateAccount> {
         message: "Congratulations! Your account has been created",
         backgroundColor: AppColors.successSnackBarColor,
       );
-      context.goNamed(AppRoutes.homeRouteName);
+      context.goNamed(AppRoutes.profileOnBoardRouteName);
     } else if (state is SignUpFailed) {
       AppSnackbar.show(
         context: context,

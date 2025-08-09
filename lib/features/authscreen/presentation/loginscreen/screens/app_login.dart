@@ -5,8 +5,8 @@ import 'package:earn_watching_ads/core/utils/app_routes.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/loginscreen/bloc/login_bloc.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_logo.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_snackbar.dart';
-import 'package:earn_watching_ads/features/authscreen/presentation/widgets/app_text_field.dart';
-import 'package:earn_watching_ads/features/authscreen/presentation/widgets/auth_button.dart';
+import 'package:earn_watching_ads/core/widgets/app_text_field.dart';
+import 'package:earn_watching_ads/core/widgets/app_button.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/auth_page_title.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/lodaing.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/redirect_from_login.dart';
@@ -86,7 +86,7 @@ class _AppLoginState extends State<AppLogin> {
                           textEditingController: passController,
                         ),
                         Gap(28.h),
-                        AuthButton(
+                        AppButton(
                           buttonName: "Sign in",
                           ontap: () {
                             context.read<LoginBloc>().add(

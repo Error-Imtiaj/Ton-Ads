@@ -3,7 +3,7 @@ import 'package:earn_watching_ads/features/authscreen/presentation/widgets/textf
 import 'package:flutter/material.dart';
 
 class AppTextField extends StatelessWidget {
-  final String labelText;
+  final String? labelText;
   final bool? obsecureText;
   final TextEditingController? textEditingController;
   final FormFieldValidator<String>? validator;

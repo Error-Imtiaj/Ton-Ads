@@ -6,6 +6,7 @@ import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/services/sign_up_auth.dart';
 import 'package:earn_watching_ads/features/homeScreen/SERVICES/log_out_services.dart';
 import 'package:earn_watching_ads/features/homeScreen/bloc/home_bloc.dart';
+import 'package:earn_watching_ads/features/profileOnboard/bloc/onboard_bloc.dart';
 import 'package:earn_watching_ads/features/splashscreen/bloc/splash_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -28,7 +29,10 @@ void service_locator() {
   //? REPO ======================================================
   // * REGISTER SIGN UP SERVICE
   getIt.registerLazySingleton<SignUpAuth>(
-    () => SignUpAuth(firebaseAuth: getIt<FirebaseAuth>(), googleSignIn: getIt<GoogleSignIn>()),
+    () => SignUpAuth(
+      firebaseAuth: getIt<FirebaseAuth>(),
+      googleSignIn: getIt<GoogleSignIn>(),
+    ),
   );
 
   // * REGISTER LOGIN SERVICE
@@ -73,4 +77,7 @@ void service_locator() {
 
   // * HOME BLOC
   getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt<LogOutServices>()));
+
+  // * ONBOARD BLOC
+  getIt.registerLazySingleton<OnboardBloc>(() => OnboardBloc());
 }

@@ -9,6 +9,8 @@ import 'package:earn_watching_ads/features/authscreen/presentation/loginscreen/s
 import 'package:earn_watching_ads/features/authscreen/presentation/forgetPassword/screens/forget_password.dart';
 import 'package:earn_watching_ads/features/homeScreen/bloc/home_bloc.dart';
 import 'package:earn_watching_ads/features/homeScreen/presentation/screens/home_screen.dart';
+import 'package:earn_watching_ads/features/profileOnboard/bloc/onboard_bloc.dart';
+import 'package:earn_watching_ads/features/profileOnboard/presentation/screens/profile_onboard.dart';
 import 'package:earn_watching_ads/features/splashscreen/bloc/splash_bloc.dart';
 import 'package:earn_watching_ads/features/splashscreen/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +35,7 @@ class EarnApp extends StatelessWidget {
             BlocProvider(create: (context) => getIt<LoginBloc>()),
             BlocProvider(create: (context) => getIt<HomeBloc>()),
             BlocProvider(create: (context) => getIt<ForgetPassBloc>()),
+            BlocProvider(create: (context) => getIt<OnboardBloc>()),
           ],
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
@@ -46,38 +49,42 @@ class EarnApp extends StatelessWidget {
   }
 
   //? GO ROUTE CONFIG
-
   final GoRouter _router = GoRouter(
     initialLocation: AppRoutes.initialRoutePath,
     routes: [
-      // Splash Screen
       GoRoute(
         path: AppRoutes.initialRoutePath,
         builder: (context, state) => const SplashScreen(),
       ),
-
-      // Login
+      // * /LOGIN ROUTES
       GoRoute(
         path: AppRoutes.loginRoutePath,
         name: AppRoutes.loginRouteName,
         builder: (context, state) => const AppLogin(),
-      ),
+        routes: [
+          //? SIGN UP ROUTE
+          GoRoute(
+            path: AppRoutes.signUpRoutePath,
+            name: AppRoutes.signUpRouteName,
+            builder: (context, state) => const AppCreateAccount(),
+          ),
 
-      // Sign Up (top-level)
+          //? FORGET PASSWORD ROUTE
+          GoRoute(
+            path: AppRoutes.forgetRoutePath,
+            name: AppRoutes.forgetRouteName,
+            builder: (context, state) => const ForgetPassword(),
+          ),
+        ],
+      ),
+      // TODO PROFILE ONBOARDING ROUTES
       GoRoute(
-        path: '/${AppRoutes.signUpRoutePath}',
-        name: AppRoutes.signUpRouteName,
-        builder: (context, state) => const AppCreateAccount(),
+        path: AppRoutes.profileOnBoardRoutePath,
+        name: AppRoutes.profileOnBoardRouteName,
+        builder: (context, state) => const ProfileOnboard(),
       ),
 
-      // Forget Password (top-level)
-      GoRoute(
-        path: '/${AppRoutes.forgetRoutePath}',
-        name: AppRoutes.forgetRouteName,
-        builder: (context, state) => const ForgetPassword(),
-      ),
-
-      // Home
+      // TODO HOME ROUTES
       GoRoute(
         path: AppRoutes.homeRoutePath,
         name: AppRoutes.homeRouteName,
