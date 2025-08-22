@@ -12,4 +12,6 @@ class AppColors {
   static const Color appbarBackgroundColor = Color(0xff4b7bec);
   static const Color appPrimaryTextColor = Color(0xffffffff);
   static const Color appAppbarButtonColor = Color(0xffffffff);
+  static const Color goldenColor = Color(0xfff7b731);
+  static const Color orangeColor = Color(0xfffa8231);
 }
