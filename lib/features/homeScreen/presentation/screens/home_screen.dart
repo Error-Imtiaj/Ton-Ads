@@ -1,8 +1,13 @@
+import 'package:earn_watching_ads/core/themes/app_const.dart';
 import 'package:earn_watching_ads/core/utils/app_routes.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/lodaing.dart';
 import 'package:earn_watching_ads/features/homeScreen/bloc/home_bloc.dart';
+import 'package:earn_watching_ads/features/homeScreen/presentation/widgets/appbar_widget.dart';
+import 'package:earn_watching_ads/features/homeScreen/presentation/widgets/balance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -19,15 +24,12 @@ class HomeScreen extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
-          body: Center(
+          appBar: AppbarWidget(),
+          body: Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppConst.scaffoldPadding),
             child: (state is HomeLoadingState)
                 ? Loading()
-                : ElevatedButton(
-                    onPressed: () {
-                      context.read<HomeBloc>().add(HomeLogOutEvent());
-                    },
-                    child: Text("log out"),
-                  ),
+                : Column(children: [Gap(24.h), Balance()]),
           ),
         );
       },

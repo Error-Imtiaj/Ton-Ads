@@ -44,8 +44,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       try {
         await loginServices.signInWithGoogle();
         emit(LoginSuccess());
+      } on FirebaseAuthException catch (e) {
+        String errorMessage = AuthException.loginExecptionMsg(e);
+        emit(LoginFailed(message: errorMessage));
       } catch (e) {
-        emit(LoginFailed(message: e.toString()));
+        emit(LoginFailed(message: "Unexpected error occured"));
       }
     });
 

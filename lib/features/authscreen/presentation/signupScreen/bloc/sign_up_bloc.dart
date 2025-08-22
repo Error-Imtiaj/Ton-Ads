@@ -45,12 +45,15 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     });
 
     on<SignUpWithGooglePressed>((event, emit) async {
-       emit(SignUpLoading());
+      emit(SignUpLoading());
       try {
         await signUpAuth.signInWithGoogle();
         emit(SignUpSuccess());
+      } on FirebaseAuthException catch (e) {
+        String errorMessage = AuthException.loginExecptionMsg(e);
+        emit(SignUpFailed(errorMsg: errorMessage));
       } catch (e) {
-        emit(SignUpFailed(errorMsg: e.toString()));
+        emit(SignUpFailed(errorMsg: "Unexepected Error Occured"));
       }
     });
   }
