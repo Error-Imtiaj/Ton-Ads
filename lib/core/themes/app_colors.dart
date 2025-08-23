@@ -14,4 +14,5 @@ class AppColors {
   static const Color appAppbarButtonColor = Color(0xffffffff);
   static const Color goldenColor = Color(0xfff7b731);
   static const Color orangeColor = Color(0xfffa8231);
+  static const Color navBarBackgroundColor = Color(0xffE1E4F5);
 }

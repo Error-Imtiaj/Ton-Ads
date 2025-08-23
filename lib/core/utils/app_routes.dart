@@ -9,6 +9,7 @@ class AppRoutes {
   // OTHER ROUTES
   static const String profileOnBoardRoutePath = '/profileOn';
   // CORE APP ROUTES
+  static const String navScreenPath = '/nav';
   static const String homeRoutePath = '/home';
 
   // ROUTES NAME
@@ -17,4 +18,5 @@ class AppRoutes {
   static const String forgetRouteName = 'ForgetRoute';
   static const String homeRouteName = 'HomeRoute';
   static const String profileOnBoardRouteName = 'ProfileOn';
+  static const String navScreenRouteName = 'Nav';
 }

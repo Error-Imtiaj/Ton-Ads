@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return BlocListener<SplashBloc, SplashState>(
       listener: (context, state) {
         if (state is SplashNavigateToHome) {
-          context.goNamed(AppRoutes.homeRouteName);
+          context.goNamed(AppRoutes.navScreenRouteName);
         }
         if (state is SplashNavigateToLogin) {
           context.goNamed(AppRoutes.loginRouteName);

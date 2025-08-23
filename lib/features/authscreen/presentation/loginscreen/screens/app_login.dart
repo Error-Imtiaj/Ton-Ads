@@ -54,7 +54,7 @@ class _AppLoginState extends State<AppLogin> {
             message: "You have successfully logged in",
             backgroundColor: AppColors.successSnackBarColor,
           );
-          context.goNamed(AppRoutes.homeRouteName);
+          context.goNamed(AppRoutes.navScreenRouteName);
         }
       },
       builder: (context, state) {

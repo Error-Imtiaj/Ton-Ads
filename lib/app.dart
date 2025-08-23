@@ -9,6 +9,8 @@ import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/screens/app_create_account.dart';
 import 'package:earn_watching_ads/features/homeScreen/bloc/home_bloc.dart';
 import 'package:earn_watching_ads/features/homeScreen/presentation/screens/home_screen.dart';
+import 'package:earn_watching_ads/features/navScreen/bloc/nav_bloc.dart';
+import 'package:earn_watching_ads/features/navScreen/presentation/screen/nav_screen.dart';
 import 'package:earn_watching_ads/features/profileOnboard/bloc/onboard_bloc.dart';
 import 'package:earn_watching_ads/features/profileOnboard/presentation/screens/profile_onboard.dart';
 import 'package:earn_watching_ads/features/splashscreen/bloc/splash_bloc.dart';
@@ -36,6 +38,7 @@ class EarnApp extends StatelessWidget {
             BlocProvider(create: (context) => getIt<HomeBloc>()),
             BlocProvider(create: (context) => getIt<ForgetPassBloc>()),
             BlocProvider(create: (context) => getIt<OnboardBloc>()),
+            BlocProvider(create: (context) => getIt<NavBloc>()),
           ],
           child: MaterialApp.router(
             debugShowCheckedModeBanner: false,
@@ -89,6 +92,13 @@ class EarnApp extends StatelessWidget {
         path: AppRoutes.homeRoutePath,
         name: AppRoutes.homeRouteName,
         builder: (context, state) => const HomeScreen(),
+      ),
+
+      // TODO NAV SCREEN
+      GoRoute(
+        path: AppRoutes.navScreenPath,
+        name: AppRoutes.navScreenRouteName,
+        builder: (context, state) => const NavScreen(),
       ),
     ],
   );

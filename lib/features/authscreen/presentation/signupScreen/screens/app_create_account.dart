@@ -144,6 +144,7 @@ class _AppCreateAccountState extends State<AppCreateAccount> {
         message: "Congratulations! Your account has been created",
         backgroundColor: AppColors.successSnackBarColor,
       );
+      // TODO FIX PROFILEONBOARD THEN NAVIGATE TO NAV SCREEN
       context.goNamed(AppRoutes.profileOnBoardRouteName);
     } else if (state is SignUpFailed) {
       AppSnackbar.show(

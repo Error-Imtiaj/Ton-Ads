@@ -1,10 +1,27 @@
 part of 'onboard_bloc.dart';
 
+enum OnboardStatus { initial, loading, success, error }
+
 class OnboardState {
   final int step;
-  const OnboardState({required this.step});
+  final OnboardStatus status;
+  final String? errorMessage;
 
-  OnboardState copyWith({int? step}) {
-    return OnboardState(step: step ?? this.step);
+  const OnboardState({
+    required this.step,
+    this.status = OnboardStatus.initial,
+    this.errorMessage,
+  });
+
+  OnboardState copyWith({
+    int? step,
+    OnboardStatus? status,
+    String? errorMessage,
+  }) {
+    return OnboardState(
+      step: step ?? this.step,
+      status: status ?? this.status,
+      errorMessage: errorMessage,
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/forgetPassword/bloc/forget_pass_bloc.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/forgetPassword/services/forget_pass_services.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/loginscreen/bloc/login_bloc.dart';
@@ -6,7 +7,10 @@ import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/
 import 'package:earn_watching_ads/features/authscreen/presentation/signupScreen/services/sign_up_auth.dart';
 import 'package:earn_watching_ads/features/homeScreen/SERVICES/log_out_services.dart';
 import 'package:earn_watching_ads/features/homeScreen/bloc/home_bloc.dart';
+import 'package:earn_watching_ads/features/navScreen/bloc/nav_bloc.dart';
 import 'package:earn_watching_ads/features/profileOnboard/bloc/onboard_bloc.dart';
+import 'package:earn_watching_ads/features/profileOnboard/data/dataProvider/user_data_provider.dart';
+import 'package:earn_watching_ads/features/profileOnboard/data/repo/user_repo.dart';
 import 'package:earn_watching_ads/features/splashscreen/bloc/splash_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -23,6 +27,10 @@ void service_locator() {
   getIt.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn());
   // * FACEBOOK AUTH INSTANCE
   getIt.registerLazySingleton<FacebookAuth>(() => FacebookAuth.instance);
+  // * FIREBASE FIRESTORE INSTANCE
+  getIt.registerLazySingleton<FirebaseFirestore>(
+    () => FirebaseFirestore.instance,
+  );
 
   // * ==========================================================
 
@@ -54,6 +62,19 @@ void service_locator() {
     () => ForgetPassServices(firebaseAuth: getIt<FirebaseAuth>()),
   );
 
+  // * USER DATA PROVIDER
+  getIt.registerLazySingleton<UserDataProvider>(
+    () => UserDataProvider(
+      firebaseAuth: getIt<FirebaseAuth>(),
+      firebaseFirestore: getIt<FirebaseFirestore>(),
+    ),
+  );
+
+  // * USER REPO
+  getIt.registerLazySingleton<UserRepo>(
+    () => UserRepo(userDataProvider: getIt<UserDataProvider>()),
+  );
+
   // * ==========================================================
 
   // ? BLOCS
@@ -79,5 +100,8 @@ void service_locator() {
   getIt.registerFactory<HomeBloc>(() => HomeBloc(getIt<LogOutServices>()));
 
   // * ONBOARD BLOC
-  getIt.registerLazySingleton<OnboardBloc>(() => OnboardBloc());
+  getIt.registerLazySingleton<OnboardBloc>(() => OnboardBloc(userRepo: getIt<UserRepo>()));
+
+  // * NAVBAR BLOC
+  getIt.registerLazySingleton<NavBloc>(() => NavBloc());
 }

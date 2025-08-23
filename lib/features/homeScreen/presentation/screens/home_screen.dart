@@ -47,42 +47,44 @@ class HomeScreen extends StatelessWidget {
               ),
               child: (state is HomeLoadingState)
                   ? Loading()
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Gap(24.h),
-                        Balance(),
-                        Gap(24.h),
-                        AppText(text: "Statistics", fontSize: 14.sp),
-                        WeeklyCoinChart(),
-                        Gap(24.h),
-                        _availableTask(),
-                        Divider(color: AppColors.appPrimaryColor),
-                        Gap(16.h),
-                        WatchAdsTile(
-                          title: "Reward Ads",
-                          tileColor: AppColors.goldenColor,
-                          onTap: () {
-                            // todo CLICK TO WATCH ADS
-                          },
-                        ),
-                        Gap(12.h),
-                        WatchAdsTile(
-                          title: "Reward Ads2",
-                          tileColor: AppColors.appbarBackgroundColor,
-                          onTap: () {
-                            // todo CLICK TO WATCH ADS
-                          },
-                        ),
-                        Gap(12.h),
-                        WatchAdsTile(
-                          title: "Reward Ads3",
-                          tileColor: AppColors.orangeColor,
-                          onTap: () {
-                            // todo CLICK TO WATCH ADS
-                          },
-                        ),
-                      ],
+                  : SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Gap(24.h),
+                          Balance(),
+                          Gap(24.h),
+                          AppText(text: "Statistics", fontSize: 14.sp),
+                          WeeklyCoinChart(),
+                          Gap(24.h),
+                          _availableTask(),
+                          Divider(color: AppColors.appPrimaryColor),
+                          Gap(16.h),
+                          WatchAdsTile(
+                            title: "Reward Ads",
+                            tileColor: AppColors.goldenColor,
+                            onTap: () {
+                              // todo CLICK TO WATCH ADS
+                            },
+                          ),
+                          Gap(12.h),
+                          WatchAdsTile(
+                            title: "Reward Ads2",
+                            tileColor: AppColors.appbarBackgroundColor,
+                            onTap: () {
+                              // todo CLICK TO WATCH ADS
+                            },
+                          ),
+                          Gap(12.h),
+                          WatchAdsTile(
+                            title: "Reward Ads3",
+                            tileColor: AppColors.orangeColor,
+                            onTap: () {
+                              // todo CLICK TO WATCH ADS
+                            },
+                          ),
+                        ],
+                      ),
                     ),
             ),
           ),
