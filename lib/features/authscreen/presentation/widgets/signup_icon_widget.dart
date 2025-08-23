@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SignupIconWidget extends StatelessWidget {
@@ -10,7 +11,7 @@ class SignupIconWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: ontap,
-      child: SvgPicture.asset(svgAssetPath, width: 44),
+      child: SvgPicture.asset(svgAssetPath, width: 44.r),
     );
   }
 }

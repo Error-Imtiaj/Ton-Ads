@@ -20,17 +20,20 @@ class AppTheme {
 
         filled: true,
         fillColor: AppColors.textFieldBackColor,
-        contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+        contentPadding: EdgeInsets.symmetric(
+          vertical: 20.0.r,
+          horizontal: 20.0.r,
+        ),
       ),
 
       // TODO  TEXT THEME
       textTheme: TextTheme(
         labelLarge: GoogleFonts.merriweather(
-          fontSize: 24,
+          fontSize: 24.r,
           fontWeight: FontWeight.w600,
         ),
         labelSmall: GoogleFonts.merriweather(
-          fontSize: 14,
+          fontSize: 14.r,
           fontWeight: FontWeight.w600,
         ),
       ),

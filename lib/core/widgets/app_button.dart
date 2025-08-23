@@ -17,7 +17,7 @@ class AppButton extends StatelessWidget {
         onTap: ontap,
         borderRadius: BorderRadius.circular(12.r),
         child: Container(
-          height: 56.h,
+          height: 56.r,
           decoration: TextfieldBoxDecoration.textFieldContainerDecoration(
             context: context,
             backgroundColor: AppColors.appPrimaryColor,
@@ -27,9 +27,9 @@ class AppButton extends StatelessWidget {
             child: Text(
               buttonName,
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    fontSize: 16.sp,
-                    color: AppColors.authPagesScaffoldBackColor,
-                  ),
+                fontSize: 16.r,
+                color: AppColors.authPagesScaffoldBackColor,
+              ),
             ),
           ),
         ),

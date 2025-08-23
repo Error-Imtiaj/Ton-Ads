@@ -10,7 +10,7 @@ class Balance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(16).r,
       decoration: BoxDecoration(
         color: AppColors.appbarBackgroundColor,
         borderRadius: BorderRadius.circular(8.r),
@@ -20,12 +20,12 @@ class Balance extends StatelessWidget {
         children: [
           AppText(
             text: 'Balance: ',
-            fontSize: 16.sp,
+            fontSize: 16.r,
             textColor: AppColors.appPrimaryTextColor,
           ),
           AppText(
             text: '${balance ?? 0} 🪙',
-            fontSize: 18.sp,
+            fontSize: 18.r,
             textColor: AppColors.appPrimaryTextColor,
           ),
         ],

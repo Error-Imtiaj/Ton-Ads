@@ -9,7 +9,7 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SvgPicture.asset(AppAssets.mainAppLogoPath, width: 200.w),
+      child: SvgPicture.asset(AppAssets.mainAppLogoPath, width: 200.r),
     );
   }
 }

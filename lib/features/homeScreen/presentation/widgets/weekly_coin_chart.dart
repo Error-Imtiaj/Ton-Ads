@@ -48,7 +48,7 @@ class WeeklyCoinChart extends StatelessWidget {
     }
 
     return SizedBox(
-      height: 230.h,
+      height: 230.r,
       child: LineChart(
         LineChartData(
           minX: 0,

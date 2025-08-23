@@ -126,7 +126,6 @@ class _AppCreateAccountState extends State<AppCreateAccount> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Gap(24.w),
         SignupIconWidget(
           svgAssetPath: AppAssets.googleLogo,
           ontap: () {

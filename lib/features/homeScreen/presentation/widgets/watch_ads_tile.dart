@@ -7,17 +7,22 @@ class WatchAdsTile extends StatelessWidget {
   final String title;
   final Function()? onTap;
   final Color tileColor;
-  const WatchAdsTile({super.key, required this.title, this.onTap, required this.tileColor});
+  const WatchAdsTile({
+    super.key,
+    required this.title,
+    this.onTap,
+    required this.tileColor,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: AppText(text: title, fontSize: 14.sp),
+      title: AppText(text: title, fontSize: 14.r),
       tileColor: tileColor,
       dense: true,
       trailing: AppText(
         text: 'view Ads',
-        fontSize: 14.sp,
+        fontSize: 14.r,
         textColor: AppColors.appPrimaryTextColor,
       ),
       shape: ContinuousRectangleBorder(

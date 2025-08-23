@@ -4,7 +4,7 @@ import 'package:earn_watching_ads/core/utils/app_routes.dart';
 import 'package:earn_watching_ads/core/widgets/app_text.dart';
 import 'package:earn_watching_ads/features/authscreen/presentation/widgets/lodaing.dart';
 import 'package:earn_watching_ads/features/homeScreen/bloc/home_bloc.dart';
-import 'package:earn_watching_ads/features/homeScreen/presentation/widgets/appbar_widget.dart';
+import 'package:earn_watching_ads/core/widgets/appbar_widget.dart';
 import 'package:earn_watching_ads/features/homeScreen/presentation/widgets/balance.dart';
 import 'package:earn_watching_ads/features/homeScreen/presentation/widgets/confirm_exit_dialogue.dart';
 import 'package:earn_watching_ads/features/homeScreen/presentation/widgets/watch_ads_tile.dart';
@@ -40,10 +40,13 @@ class HomeScreen extends StatelessWidget {
             }
           },
           child: Scaffold(
-            appBar: AppbarWidget(),
+            appBar: AppbarWidget(
+              title: "Mohammad Imtiaj Hossen",
+              welcomeText: "Welcome Back",
+            ),
             body: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: AppConst.scaffoldPadding,
+                horizontal: AppConst.scaffoldPadding.r,
               ),
               child: (state is HomeLoadingState)
                   ? Loading()
@@ -54,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                           Gap(24.h),
                           Balance(),
                           Gap(24.h),
-                          AppText(text: "Statistics", fontSize: 14.sp),
+                          AppText(text: "Statistics", fontSize: 14.r),
                           WeeklyCoinChart(),
                           Gap(24.h),
                           _availableTask(),

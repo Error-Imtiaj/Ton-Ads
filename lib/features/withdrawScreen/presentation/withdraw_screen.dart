@@ -1,3 +1,5 @@
+import 'package:earn_watching_ads/core/themes/app_const.dart';
+import 'package:earn_watching_ads/core/widgets/appbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class WithdrawScreen extends StatelessWidget {
@@ -5,6 +7,12 @@ class WithdrawScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Withdraw screen")));
+    return Scaffold(
+      appBar: AppbarWidget(title: "Payout Details"),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: AppConst.scaffoldPadding),
+        child: SingleChildScrollView(child: Column()),
+      ),
+    );
   }
 }

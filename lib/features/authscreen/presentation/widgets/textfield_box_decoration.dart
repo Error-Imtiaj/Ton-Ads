@@ -16,6 +16,13 @@ class TextfieldBoxDecoration {
           color: shadowColor!.withAlpha((0.05 * 255).round()),
           spreadRadius: 2,
           blurRadius: 8,
+          offset: Offset(0, 0),
+        ),
+
+        BoxShadow(
+          color: shadowColor.withAlpha((0.05 * 255).round()),
+          spreadRadius: 2,
+          blurRadius: 8,
           offset: Offset(0, 4),
         ),
       ],

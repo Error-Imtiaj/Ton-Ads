@@ -61,12 +61,13 @@ class _AppLoginState extends State<AppLogin> {
         return Scaffold(
           backgroundColor: AppColors.authPagesScaffoldBackColor,
           body: Padding(
-            padding: EdgeInsets.all(AppConst.scaffoldPadding.w),
+            padding: EdgeInsets.all(AppConst.scaffoldPadding.r),
             child: (state is LoginLoading)
                 ? Loading()
                 : SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+
                       children: [
                         // * LOGO
                         Gap(100.h),
@@ -116,7 +117,7 @@ class _AppLoginState extends State<AppLogin> {
                             //     );
                             //   },
                             // ),
-                            Gap(24.w),
+                            // Gap(24.w),
                             SignupIconWidget(
                               svgAssetPath: AppAssets.googleLogo,
                               ontap: () {
