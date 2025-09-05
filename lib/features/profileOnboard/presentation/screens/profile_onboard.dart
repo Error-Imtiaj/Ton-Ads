@@ -109,9 +109,18 @@ class _ProfileOnboardState extends State<ProfileOnboard> {
                   ontap: () {
                     if (state.step < 3) {
                       if (state.step == 2 && genderController.text.isEmpty) {
-                        print("Please select your Gender");
+                        AppSnackbar.show(
+                          context: context,
+                          message: "Please Select Your Gender",
+                          backgroundColor: AppColors.errorSnackBarColor,
+                        );
                       } else if (useController(state.step)!.text.isEmpty) {
-                        print("Please fill out the form");
+                        AppSnackbar.show(
+                          context: context,
+                          message: "Please fill out the form",
+                          backgroundColor: AppColors.errorSnackBarColor,
+                        );
+                      
                       } else {
                         context.read<OnboardBloc>().add(NextStepEvent());
                       }

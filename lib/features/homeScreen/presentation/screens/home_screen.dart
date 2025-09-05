@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
       listener: (context, state) {
-        // TODO: implement listener
+        
         if (state is HomeLogOutState) {
           context.goNamed(AppRoutes.loginRouteName);
         }

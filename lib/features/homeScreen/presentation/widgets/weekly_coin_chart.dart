@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WeeklyCoinChart extends StatelessWidget {
   // Previous 3 days + today
-  final List<double> coinData = [10, 20, 15, 30]; // previous 3 + today
+  final List<double> coinData = [10, 20, 15, 30];
+
+   WeeklyCoinChart({super.key}); // previous 3 + today
 
   // Function to generate 7-day titles with today in the middle (index 3)
   List<String> getWeekTitles() {

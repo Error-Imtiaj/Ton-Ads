@@ -24,7 +24,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   final TextEditingController emailController = TextEditingController();
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     emailController.dispose();
     super.dispose();
   }

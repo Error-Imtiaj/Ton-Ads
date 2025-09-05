@@ -10,14 +10,14 @@ class ConfirmExitDialog extends StatelessWidget {
   final String cancelText;
 
   const ConfirmExitDialog({
-    Key? key,
+    super.key,
     this.title = "Exit App",
     this.content = "Do you really want to leave the app?",
     this.confirmText = "Yes",
     this.cancelText = "No",
-  }) : super(key: key);
+  });
 
-  /// Show the dialog and return a Future<bool>
+  
   static Future<bool> show(
     BuildContext context, {
     String title = "Exit App",
